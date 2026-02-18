@@ -1,6 +1,6 @@
 package com.staffcasts.harmony;
 
-public class SeventhChord extends Triad{
+public class SeventhChord extends Triad {
     private String seventh;
     private SeventhChordQuality seventhChordQuality;
 
