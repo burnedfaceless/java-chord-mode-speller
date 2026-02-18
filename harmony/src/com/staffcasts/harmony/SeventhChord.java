@@ -1,12 +1,46 @@
-/**
- * File: SeventhChord.java
- * Class: CSCI 1302
- * Author: Brian Abbott
- * Created on: 2/17/26
- * Last modified: 2/17/26
- * Description: To be filled in by the user.
- */
 package com.staffcasts.harmony;
 
-public class SeventhChord {
+public class SeventhChord extends Triad{
+    private String seventh;
+    private SeventhChordQuality seventhChordQuality;
+
+    public SeventhChord() {
+        this("C", SeventhChordQuality.MAJORSEVENTH);
+    }
+
+    public SeventhChord(String root, SeventhChordQuality seventhChordQuality) {
+        super(root, SeventhChord.determineTriadQuality(seventhChordQuality));
+        setSeventhChordQuality(seventhChordQuality);
+        setSeventh();
+    }
+
+    protected void setSeventh() {
+        this.seventh = switch (seventhChordQuality) {
+            case MAJORSEVENTH -> calculateMajorThird(this.getFifth());
+            case DOMINANTSEVENTH, DIMINISHEDSEVENTH, MINORSEVENFLATFIVE, MINORSEVENTH -> calculateMinorThird(getFifth());
+        };
+    }
+
+    @Override
+    public String getChord() {
+        return super.getChord() + " " + this.getSeventh();
+    }
+
+
+    protected void setSeventhChordQuality(SeventhChordQuality seventhChordQuality) {
+        this.seventhChordQuality = seventhChordQuality;
+    }
+
+    private static TriadQuality determineTriadQuality(SeventhChordQuality seventhChordQuality) {
+        return switch (seventhChordQuality) {
+            case MAJORSEVENTH, DOMINANTSEVENTH -> TriadQuality.MAJOR;
+            case DIMINISHEDSEVENTH, MINORSEVENTH -> TriadQuality.MINOR;
+            case MINORSEVENFLATFIVE -> TriadQuality.DIMINISHED;
+        };
+    }
+
+    public String getSeventh() {
+        return this.seventh;
+    }
+
 }
