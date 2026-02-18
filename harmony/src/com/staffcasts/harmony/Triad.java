@@ -4,7 +4,7 @@ public class Triad {
     private String root;
     private String third;
     private String fifth;
-    private TriadQuality quality;
+    private TriadQuality triadQuality;
 
     public Triad() {
         this("C", TriadQuality.MAJOR);
@@ -17,19 +17,19 @@ public class Triad {
         setFifth();
     }
 
-    public void setRoot(String root) {
+    protected void setRoot(String root) {
         this.root = root;
     }
 
     protected void setThird() {
-        this.third = switch (quality) {
+        this.third = switch (triadQuality) {
             case MAJOR, AUGMENTED -> calculateMajorThird(root);
             case MINOR, DIMINISHED -> calculateMinorThird(root);
         };
     }
 
     protected void setFifth() {
-        this.fifth = switch (quality) {
+        this.fifth = switch (triadQuality) {
             case MAJOR, DIMINISHED -> calculateMinorThird(this.third);
             case MINOR, AUGMENTED -> calculateMajorThird(this.third);
         };
@@ -40,7 +40,7 @@ public class Triad {
     }
 
     public void setTriadQuality(TriadQuality quality) {
-        this.quality = quality;
+        this.triadQuality = quality;
     }
 
     public String getRoot() {
