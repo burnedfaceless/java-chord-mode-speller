@@ -15,9 +15,9 @@ public class SeventhChord extends Triad{
     }
 
     protected void setSeventh() {
-        this.seventh = switch (seventhChordQuality) {
+        this.seventh = switch (this.seventhChordQuality) {
             case MAJORSEVENTH -> calculateMajorThird(this.getFifth());
-            case DOMINANTSEVENTH, DIMINISHEDSEVENTH, MINORSEVENFLATFIVE, MINORSEVENTH -> calculateMinorThird(getFifth());
+            case DOMINANTSEVENTH, DIMINISHEDSEVENTH, MINORSEVENFLATFIVE, MINORSEVENTH -> calculateMinorThird(this.getFifth());
         };
     }
 
