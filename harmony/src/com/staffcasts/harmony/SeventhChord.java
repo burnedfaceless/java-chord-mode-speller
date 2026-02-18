@@ -34,8 +34,8 @@ public class SeventhChord extends Triad{
     private static TriadQuality determineTriadQuality(SeventhChordQuality seventhChordQuality) {
         return switch (seventhChordQuality) {
             case MAJORSEVENTH, DOMINANTSEVENTH -> TriadQuality.MAJOR;
-            case DIMINISHEDSEVENTH, MINORSEVENTH -> TriadQuality.MINOR;
-            case MINORSEVENFLATFIVE -> TriadQuality.DIMINISHED;
+            case MINORSEVENTH -> TriadQuality.MINOR;
+            case MINORSEVENFLATFIVE, DIMINISHEDSEVENTH -> TriadQuality.DIMINISHED;
         };
     }
 
